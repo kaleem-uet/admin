@@ -2,91 +2,169 @@ import React,{useState,useEffect} from "react";
 import "./productList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { productRows } from "../../dummyData";
+
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell
+} from "@material-ui/core";
+
 import { Link } from "react-router-dom";
-
+const columns = [
+  { field: 'id', headerName: 'ID' },
+  { field: 'Name', headerName: 'Name', width: 300 },
+  { field: 'Email', headerName: 'Email', width: 300 },
+  {
+    field: "action",
+    headerName: "Action",
+    width: 190,
+    renderCell: (params) => {
+      return (
+        <>
+          <Link 
+          // to={"/product/" + params.row.id}
+          >
+            <button style={{width:70}} className="productListEdit">Edit</button>
+          </Link>
+          <Link 
+          // to={"/product/" + params.row.id}
+          >
+            <button style={{width:70,justifyContent:"space-between"}}  className="productListDelete" >Delete</button>
+          </Link>
+        </>
+      );
+    },
+  },
+]
 function ProductList() {
-
-  const fetchData = () => {
-    // pu a link here to fetch all the touter data 
-    fetch("")
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setUsers(data)
-      })
-  }
+  const [tableData, setTableData] = useState([])
 
   useEffect(() => {
-    fetchData()
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((data) => data.json())
+      .then((data) => setTableData(data))
+
   }, [])
 
-  const [users, setUsers] = useState([])
+  
 
-  // const [data, setData] = useState(productRows);
+
+
+  // //  we have to fetch student 
+
+  // const fetchData = () => {
+  //   // pu a link here to fetch all the studenet data 
+  //   fetch("https://jsonplaceholder.typicode.com/users")
+  //     .then(response => {
+  //       return response.json()
+  //     })
+  //     .then(data => {
+  //       setData(data)
+  //     })
+  // }
+
+  // const [data, setData] = useState(userRows);
+
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
+
+  // // const [users, setUsers] = useState([])
+
 
   // const handleDelete = (id) => {
   //   setData(data.filter((item) => item.id !== id));
   // };
 
-  const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "name",
-      headerName: "Name",
-      width: 200,
-      renderCell: () => {
-        return (
-          <div className="productListItem">
-            <img className="productListImg" src={users.img} alt="" />
-            {users.name}
-          </div>
-        );
-      },
-    },
-    // { field: "stock", headerName: "Stock", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
-    {
-      field: "price",
-      headerName: "Major Subject ",
-      width: 160,
-    },
-    {
-      field: "action",
-      headerName: "Action",
-      width: 190,
-      renderCell: (params) => {
-        return (
-          <>
-            {/* <Link to={"/product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
-            </Link> */}
-            {/* <DeleteOutline
-              className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            /> */}
-          </>
-        );
-      },
-    },
-  ];
+  // const columns = [
+  //   { field: "id", headerName: "ID", width: 90 },
+  //   {
+  //     field: "user",
+  //     headerName: "User",
+  //     width: 200,
+  //     renderCell: (data) => {
+
+       
+  //       return (
+  //         <div className="userListUser">
+  //         {
+  //           data.map((item) => ( 
+  //             <>
+  //             <img className="userListImg" alt="" />  {item.name}
+  //             </>
+              
+  //           ))
+           
+  //          } </div>
+            
+         
+        
+  //       );
+  //     },
+  //   },
+  //   { field: "email", headerName: "Email", width: 200 },
+  //   {
+  //     field: "status",
+  //     headerName: "Status",
+  //     width: 120,
+  //   },
+  //   // {
+  //   //   field: "transaction",
+  //   //   headerName: "Transaction Volume",
+  //   //   width: 160,
+  //   // },
+  //   {
+  //     field: "action",
+  //     headerName: "Action",
+  //     width: 150,
+  //     renderCell: (params) => {
+  //       return (
+  //         <>
+  //           <Link to={"/user/" + params.row.id}>
+  //             <button className="userListEdit">Edit</button>
+  //           </Link>
+  //           {/* <DeleteOutline
+  //             className="userListDelete"
+  //             onClick={() => handleDelete(row.id)}
+  //           /> */}
+  //         </>
+  //       );
+  //     },
+  //   },
+  // ];
 
   return (
-    <div className="productList">
-      <DataGrid
-        rows={users}
+    
+   
+    <div className="userList">
+      {/* <DataGrid
+        rows={data}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
         checkboxSelection
+      /> */}
+      
+      <Table stickyHeader>
+        <TableHead>
+          <TableRow>
+            <TableCell>Touter</TableCell>
+          </TableRow>
+        </TableHead>
+      </Table>
+      
+      <DataGrid
+        rows={tableData}
+        columns={columns}
+        pageSize={8}
+        checkboxSelection
+        disableSelectionOnClick
       />
     </div>
   );
 }
 
+  
 export default ProductList;

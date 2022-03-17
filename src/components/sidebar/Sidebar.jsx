@@ -40,7 +40,7 @@ function Sidebar() {
             <li className="sidebarListItem">
               <Link to="/users" className="Link">
                 <PermIdentity className="sidebarIcon activButton" />
-                Users
+               Student
               </Link>
             </li>
             <li className="sidebarListItem">
