@@ -65,7 +65,7 @@ function Sidebar() {
               </Link>
             </li>
             <li className="sidebarListItem">
-              <Link to='/products' className="Link">
+              <Link to='/feedback' className="Link">
               <DynamicFeed className="sidebarIcon activButton" />
               Feedback
               </Link>

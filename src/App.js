@@ -6,12 +6,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./components/user/User";
 import NewUser from "./components/newUser/NewUser";
-
 import Touter from "./components/touter/Touter";
-
 import Product from "./components/product/Product";
-
 import ProductList from "./components/productList/ProductList";
+import Feedback from "./components/feedback/feedback";
 import NewProduct from "./components/newProduct/NewProduct";
 import { Mail } from "@material-ui/icons";
 function App() {
@@ -43,8 +41,9 @@ function App() {
           <Route path="/newproduct">
             <Touter/>
           </Route>
-          <Route path="/Mail">
-            <Mail/>
+
+          <Route path="/feedback">
+            <Feedback/>
           </Route>
 
         </Switch>

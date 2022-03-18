@@ -10,12 +10,17 @@ import {
   TableRow,
   TableCell
 } from "@material-ui/core";
-
+import axios from 'axios';
 import { Link } from "react-router-dom";
+
+// display the touter data here 
 const columns = [
-  { field: 'id', headerName: 'ID' },
-  { field: 'Name', headerName: 'Name', width: 300 },
-  { field: 'Email', headerName: 'Email', width: 300 },
+  { field: '_id', headerName: 'ID' },
+  { field: 'username', headerName: 'Name', width: 150 },
+  { field:'email', headerName: 'Email', width: 150 },
+  { field: 'profile_status', headerName: 'Profile Status', width: 200 },
+  { field: 'cnic', headerName: 'Cnic', width: 150 },
+  { field: 'gender', headerName: 'gender', width: 150 },
   {
     field: "action",
     headerName: "Action",
@@ -37,18 +42,20 @@ const columns = [
       );
     },
   },
+  
 ]
+
+
+
 function ProductList() {
   const [tableData, setTableData] = useState([])
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    useEffect(() => {
+    fetch("http://localhost:8800/api/userAuth/find_tutor")
       .then((data) => data.json())
       .then((data) => setTableData(data))
-
   }, [])
-
-  
+   console.log(tableData)
 
 
 
@@ -148,14 +155,15 @@ function ProductList() {
       /> */}
       
       <Table stickyHeader>
-        <TableHead>
+        <TableHead >
           <TableRow>
-            <TableCell>Touter</TableCell>
+            <TableCell style={{ fontSize:18}} >Touter</TableCell>
           </TableRow>
         </TableHead>
       </Table>
       
       <DataGrid
+        getRowId={(row) => row._id}
         rows={tableData}
         columns={columns}
         pageSize={8}
