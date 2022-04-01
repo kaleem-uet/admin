@@ -40,6 +40,13 @@ const  columns = [
     return (
       <>
       
+      <Table stickyHeader>
+        <TableHead >
+          <TableRow>
+            <TableCell style={{ fontSize:18}} >Touter</TableCell>
+          </TableRow>
+        </TableHead>
+      </Table>
        <ReactRoundedImage image={params.row.img} 
          roundedColor="#66A5CC"
           imageWidth="30"

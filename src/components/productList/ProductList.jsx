@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import "./productList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-
+import SearchBar from "material-ui-search-bar";
 import {
   TableContainer,
   Table,
@@ -153,14 +153,19 @@ function ProductList() {
         pageSize={8}
         checkboxSelection
       /> */}
-      
       <Table stickyHeader>
-        <TableHead >
+        <TableHead>
           <TableRow>
-            <TableCell style={{ fontSize:18}} >Touter</TableCell>
+            <TableCell style={{fontSize:18}} >Touter</TableCell>
           </TableRow>
         </TableHead>
       </Table>
+      <SearchBar
+          value="search"
+          // onChange={(searchVal) => requestSearch(searchVal)}
+          // onCancelSearch={() => cancelSearch()}
+          style={{marginBottom:10}}
+        />
       
       <DataGrid
         getRowId={(row) => row._id}

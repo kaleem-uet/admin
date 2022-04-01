@@ -12,16 +12,23 @@ import ProductList from "./components/productList/ProductList";
 import Feedback from "./components/feedback/feedback";
 import NewProduct from "./components/newProduct/NewProduct";
 import { Mail } from "@material-ui/icons";
+import Login from './components/login/Login';
 function App() {
   return (
     <Router>
-      <Topbar />
+      <Topbar/>
       <div className="container">
         <Sidebar />
         <Switch>
-          <Route exact path="/">
-            <Home />
+
+        <Route exact path="/login">
+            <Login/>
           </Route>
+        
+          <Route path="/home">
+            <Home/>
+          </Route>
+        
           <Route path="/users">
             <UserList />
           </Route>
@@ -34,7 +41,6 @@ function App() {
           <Route path="/touter">
             <ProductList />
           </Route>
-          
           <Route path="/product/:userId">
             <Product />
           </Route>

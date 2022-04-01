@@ -23,7 +23,7 @@ function Sidebar() {
           <h3 className="sidebarTitle ">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
-              <Link to="/" className="Link">
+              <Link to="/home" className="Link">
               <Timeline className="sidebarIcon activButton" />
 
                  Analytics
@@ -49,7 +49,7 @@ function Sidebar() {
                 Touters
               </Link>
             </li>
-
+           
             
             
             
@@ -58,22 +58,23 @@ function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-          <li className="sidebarListItem">
+
+          {/* <li className="sidebarListItem">
               <Link to="/products" className="Link">
               <MailOutline className="sidebarIcon activButton" />
                  Mail
               </Link>
-            </li>
+            </li> */}
             <li className="sidebarListItem">
               <Link to='/feedback' className="Link">
               <DynamicFeed className="sidebarIcon activButton" />
               Feedback
               </Link>
             </li>
-            <li className="sidebarListItem">
+            {/* <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon activButton" />
               Messages
-            </li>
+            </li> */}
           </ul>
         </div>
         {/* <div className="sidebarMenu">

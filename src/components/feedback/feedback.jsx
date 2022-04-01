@@ -134,7 +134,7 @@ function ProductList() {
       <Table stickyHeader>
         <TableHead >
           <TableRow>
-            <TableCell style={{ fontSize:18}} >Touter</TableCell>
+            <TableCell style={{ fontSize:18}} >Feedback</TableCell>
           </TableRow>
         </TableHead>
       </Table>
